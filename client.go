@@ -14,8 +14,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/binance/binance-connector-go/handlers"
 	"github.com/bitly/go-simplejson"
+
+	"github.com/binance/binance-connector-go/handlers"
 )
 
 // TimeInForceType define time in force type of order
@@ -753,6 +754,10 @@ func (c *Client) NewAPIKeyPermissionService() *APIKeyPermissionService {
 
 func (c *Client) NewAutoConvertStableCoinService() *AutoConvertStableCoinService {
 	return &AutoConvertStableCoinService{c: c}
+}
+
+func (c *Client) NewQueryUserWalletBalanceService() *QueryUserWalletBalanceService {
+	return &QueryUserWalletBalanceService{c: c}
 }
 
 // User Data Streams:

@@ -1764,3 +1764,34 @@ type AutoConvertStableCoinResponse struct {
 		Asset string `json:"coin"`
 	} `json:"exchangeRates"`
 }
+
+const (
+	queryUserWalletBalanceEndpoint = "/sapi/v1/asset/wallet/balance"
+)
+
+type QueryUserWalletBalanceResponse struct {
+	Activate   bool   `json:"activate"`
+	Balance    string `json:"balance"`
+	WalletName string `json:"walletName"`
+}
+
+type QueryUserWalletBalanceService struct {
+	c *Client
+}
+
+func (s *QueryUserWalletBalanceService) Do(ctx context.Context) (res []*QueryUserWalletBalanceResponse, err error) {
+	r := &request{
+		method:   http.MethodGet,
+		endpoint: queryUserWalletBalanceEndpoint,
+		secType:  secTypeSigned,
+	}
+	data, err := s.c.callAPI(ctx, r)
+	if err != nil {
+		return nil, err
+	}
+	err = json.Unmarshal(data, &res)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
+}
