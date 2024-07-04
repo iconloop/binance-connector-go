@@ -661,6 +661,59 @@ type DepositAddressResponse struct {
 	Url     string `json:"url"`
 }
 
+// Fetch deposit address list with network (USER_DATA)
+const (
+	depositAddressListEndpoint = "/sapi/v1/capital/deposit/address/list"
+)
+
+type DepositAddressListService struct {
+	c       *Client
+	coin    string
+	network *string
+}
+
+// Coin set coin
+func (s *DepositAddressListService) Coin(coin string) *DepositAddressListService {
+	s.coin = coin
+	return s
+}
+
+// Network set network
+func (s *DepositAddressListService) Network(network string) *DepositAddressListService {
+	s.network = &network
+	return s
+}
+
+func (s *DepositAddressListService) Do(ctx context.Context) (res []*DepositAddressListResponse, err error) {
+	r := &request{
+		method:   http.MethodGet,
+		endpoint: depositAddressListEndpoint,
+		secType:  secTypeSigned,
+	}
+	r.setParam("coin", s.coin)
+	if s.network != nil {
+		r.setParam("network", *s.network)
+	}
+	data, err := s.c.callAPI(ctx, r)
+	if err != nil {
+		return nil, err
+	}
+	res = make([]*DepositAddressListResponse, 0)
+	err = json.Unmarshal(data, &res)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
+}
+
+// DepositAddressListResponse define response of DepositAddressListService
+type DepositAddressListResponse struct {
+	Address   string `json:"address"`
+	Coin      string `json:"coin"`
+	Tag       string `json:"tag"`
+	IsDefault int    `json:"isDefault"`
+}
+
 // Account Status (USER_DATA)
 const (
 	accountStatusEndpoint = "/sapi/v1/account/status"

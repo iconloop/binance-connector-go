@@ -688,6 +688,10 @@ func (c *Client) NewDepositAddressService() *DepositAddressService {
 	return &DepositAddressService{c: c}
 }
 
+func (c *Client) NewDepositAddressListService() *DepositAddressListService {
+	return &DepositAddressListService{c: c}
+}
+
 func (c *Client) NewAccountStatusService() *AccountStatusService {
 	return &AccountStatusService{c: c}
 }
