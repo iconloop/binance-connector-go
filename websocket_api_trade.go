@@ -522,7 +522,7 @@ type OrderStatusResult struct {
 	Time                    uint64 `json:"time"`
 	UpdateTime              uint64 `json:"updateTime"`
 	IsWorking               bool   `json:"isWorking"`
-	WorkingTime             uint64 `json:"workingTime"`
+	WorkingTime             int64  `json:"workingTime"`
 	OrigQuoteOrderQty       string `json:"origQuoteOrderQty"`
 	SelfTradePreventionMode string `json:"selfTradePreventionMode"`
 	PreventedMatchId        int64  `json:"preventedMatchId,omitempty"`
@@ -938,7 +938,7 @@ type OrderPlacedResult struct {
 	TimeInForce             string  `json:"timeInForce,omitempty"`
 	Type                    string  `json:"type,omitempty"`
 	Side                    string  `json:"side,omitempty"`
-	WorkingTime             uint64  `json:"workingTime,omitempty"`
+	WorkingTime             int64   `json:"workingTime,omitempty"`
 	Fills                   []*Fill `json:"fills,omitempty"`
 	SelfTradePreventionMode string  `json:"selfTradePreventionMode,omitempty"`
 }
@@ -1057,7 +1057,7 @@ type OpenOrdersResult struct {
 	Time                    uint64 `json:"time"`
 	UpdateTime              uint64 `json:"updateTime"`
 	IsWorking               bool   `json:"isWorking"`
-	WorkingTime             uint64 `json:"workingTime"`
+	WorkingTime             int64  `json:"workingTime"`
 	OrigQuoteOrderQty       string `json:"origQuoteOrderQty"`
 	SelfTradePreventionMode string `json:"selfTradePreventionMode"`
 }
@@ -1419,7 +1419,7 @@ type OrderReport struct {
 	TimeInForce             string `json:"timeInForce"`
 	Type                    string `json:"type"`
 	Side                    string `json:"side"`
-	WorkingTime             uint64 `json:"workingTime"`
+	WorkingTime             int64  `json:"workingTime"`
 	SelfTradePreventionMode string `json:"selfTradePreventionMode"`
 }
 
