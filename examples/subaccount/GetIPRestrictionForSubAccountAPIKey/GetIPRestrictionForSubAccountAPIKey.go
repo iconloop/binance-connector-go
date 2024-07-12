@@ -12,8 +12,8 @@ func main() {
 }
 
 func GetIPRestrictionForSubAccountAPIKey() {
-	apiKey := "your api key"
-	secretKey := "your secret key"
+	apiKey := os.Getenv("BINANCE_API_KEY")
+	secretKey := os.Getenv("BINANCE_SECRET_KEY")
 	baseURL := "https://api.binance.com"
 
 	client := binance_connector.NewClient(apiKey, secretKey, baseURL)

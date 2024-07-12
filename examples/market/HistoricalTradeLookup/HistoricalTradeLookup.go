@@ -12,7 +12,7 @@ func main() {
 }
 
 func HistoricalTradeLookup() {
-	apiKey := "your api key"
+	apiKey := os.Getenv("BINANCE_API_KEY")
 	baseURL := "https://api.binance.com"
 
 	client := binance_connector.NewClient(apiKey, "", baseURL)
