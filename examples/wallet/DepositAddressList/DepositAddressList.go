@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
 
 	binance_connector "github.com/binance/binance-connector-go"
 )
@@ -19,7 +20,7 @@ func DepositAddressList() {
 	client := binance_connector.NewClient(apiKey, secretKey, baseURL)
 
 	// DepositAddressListService - /sapi/v1/capital/deposit/address/list
-	depositAddressList, err := client.NewDepositAddressListService().Coin("DCR").
+	depositAddressList, err := client.NewDepositAddressListService().Coin("ICX").
 		Do(context.Background())
 	if err != nil {
 		fmt.Println(err)

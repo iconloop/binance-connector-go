@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"os"
 
 	binance_connector "github.com/binance/binance-connector-go"
 )
