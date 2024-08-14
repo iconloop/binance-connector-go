@@ -605,6 +605,7 @@ type WithdrawHistoryResponse struct {
 	ConfirmNo       int    `json:"confirmNo"`
 	WalletType      int    `json:"walletType"`
 	TxKey           string `json:"txKey"`
+	CompleteTime    string `json:"completeTime"`
 }
 
 // Deposit Address (supporting network) (USER_DATA)
